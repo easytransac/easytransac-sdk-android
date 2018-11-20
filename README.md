@@ -13,6 +13,6 @@ Pour télécharger l'application, voici le lien vers le Play Store : https://pla
 
 # Aperçu de la demande de paiement
 
-![Direct payment](https://imgur.com/a/mHF3jQQ)
+![Direct payment](https://i.imgur.com/r1tQX61.png)
 
-![Multiple payment](https://imgur.com/a/3jWRt6a)
+![Multiple payment](https://i.imgur.com/zomSpuh.png)
