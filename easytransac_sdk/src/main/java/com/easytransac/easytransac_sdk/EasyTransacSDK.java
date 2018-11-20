@@ -1,5 +1,9 @@
 package com.easytransac.easytransac_sdk;
 
+/**
+ * This class contains all the usable parameters for EasyTransac SDK
+ * To use them, refer to the sample app.
+ */
 public class EasyTransacSDK
 {
 	public final static String EASYTRANSAC_PACKAGE_NAME = "com.movidone.easytransac";
