@@ -1,15 +1,18 @@
 # easytransac-sdk-android
 
-EasyTransac sample app for payment on Android. EasyTransac application must be installed on the device.
+# Intégration du SDK EasyTransac pour Android
 
-- The first project "easytransac_sdk" is containing a single file with the SDK parameters. You have to use them using an Intent.
-- The second project "sample" is a sample app for a payment demonstration.
+Le SDK d'EasyTransac est intégré dans l'application elle même, présente sur le Play Store. Pour l'utiliser, il faut appeler l'application via un Intent(). Pour ce faire, deux dossiers sont détaillés dans ce dépôt.
 
-Requirement : EasyTransac Android version 4.4.0 +
+- **easytransac_sdk** : contient un seul et unique fichier référençant les paramètres à utiliser pour utiliser le SDK EasyTransac. Il s'agit des paramètres à passer à votre Intent.
+- **sample** : projet d'exemple montrant le fonctionnement et l'utilisation du SDK. 
 
-Link to download the EasyTransac Android application :
+# Prérequis
+Application EasyTransac installé sur le périphérique Android (minimum Android version 4.4+).
+Pour télécharger l'application, voici le lien vers le Play Store : https://play.google.com/store/apps/details?id=com.movidone.easytransac
 
-https://play.google.com/store/apps/details?id=com.movidone.easytransac
+# Aperçu de la demande de paiement
 
-Documentation : [in progress]
+![Direct payment](https://imgur.com/a/mHF3jQQ)
 
+![Multiple payment](https://imgur.com/a/3jWRt6a)
