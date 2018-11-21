@@ -3,7 +3,7 @@
 
 ## Présentation
 
-Le SDK d'EasyTransac permet de payer depuis votre application Android en tout sécurité en effectuant une demande de paiement à l'application EasyTransac directement, et ce, de manière automatisée. L'intégration est très simple à réaliser sur votre application et offre à vos clients une expérience de paiement optimale. Notre SDK Android vous **permet d'utiliser le Flash de carte, le NFC (sans contact) ainsi que le paiement multiple**, le tout très simplement.
+Le SDK d'EasyTransac permet de payer depuis votre application Android en toute sécurité en effectuant une demande de paiement à l'application EasyTransac directement, et ce, de manière automatisée. L'intégration est très simple à réaliser sur votre application et offre à vos clients une expérience de paiement optimale. Notre SDK Android vous **permet d'utiliser le Flash de carte, le NFC (sans contact) ainsi que le paiement multiple**, le tout très simplement.
 
 ![Direct payment](https://i.imgur.com/kg1pGHw.png) ![Multiple payment](https://i.imgur.com/OEI6GcI.png)
 
@@ -92,7 +92,7 @@ startActivityForResult(intent, RESULT_SDK);
 
 Lorsque vous réalisez une demande de paiement, la main est passée à l'application EasyTransac qui va se charger de présenter vos informations à votre client et de le faire payer en toute sécurité. 
 
-Lorsque le paiement est terminée (réussi, échoué, annulé ou autre erreur de configuration du SDK), un retour est fait dans votre application, via la méthode "onActivityResult()".
+Lorsque le paiement est terminé (réussi, échoué, annulé ou autre erreur de configuration du SDK), un retour est fait dans votre application, via la méthode "onActivityResult()".
 
 ```java
 @Override  
@@ -110,7 +110,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 ```java
 public static final int RESULT_CODE_MISSING_PARAMETERS = -103;  
 ```
-Un des paramètres obligatoire a été refusé par le SDK parce qu'il est manquant. Vérifiez que vous utilisez bien les bonnes constantes. 
+Un des paramètres obligatoires a été refusé par le SDK parce qu'il est manquant. Vérifiez que vous utilisez bien les bonnes constantes. 
 
 ```java
 public static final int RESULT_CODE_WRONG_PARAMETERS = -104;  
