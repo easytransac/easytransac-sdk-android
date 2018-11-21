@@ -31,7 +31,7 @@ allprojects {
 Importez la dépendance 
 ```css
 	dependencies {
-                implementation 'com.github.easytransac:easytransac-sdk-android:RELEASE_NUMBER'
+            implementation 'com.github.easytransac:easytransac-sdk-android:RELEASE_NUMBER'
 	}
 ```
 Lien vers JitPack : https://jitpack.io/#easytransac/easytransac-sdk-android
@@ -39,7 +39,7 @@ Lien vers JitPack : https://jitpack.io/#easytransac/easytransac-sdk-android
 ### Manuellement
 Téléchargez et copiez dans votre projet le fichier de constantes : https://github.com/easytransac/easytransac-sdk-android/blob/master/easytransac_sdk/src/main/java/com/easytransac/easytransac_sdk/EasyTransacSDK.java
 
-*Note : attention à toujours avoir la version du SDK à jour, c'est pourquoi l'utilisation de Gradle est conseillé.*
+*Note : attention à toujours avoir la version du SDK à jour, c'est pourquoi l'utilisation de Gradle est conseillée.*
 
 ## Fonctionnement
 Le SDK d'EasyTransac est intégré dans l'application elle-même, présente sur le Google Play Store. Pour l'utiliser, il faut appeler l'application via un Intent(). 
@@ -182,7 +182,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
    // le code passé préalablement dans le startActivityForResult()
    if (requestCode == RESULT_SDK) {
         if (data != null) {
-                Log.d("Example", data.getStringExtra(EasyTransacSDK.RESULT_STATUS));
+            Log.d("Example", data.getStringExtra(EasyTransacSDK.RESULT_STATUS));
         }
    }
  }
