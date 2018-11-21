@@ -31,7 +31,7 @@ allprojects {
 Importez la dépendance 
 ```css
 	dependencies {
-		implementation 'com.github.easytransac:easytransac-sdk-android:RELEASE_NUMBER'
+                implementation 'com.github.easytransac:easytransac-sdk-android:RELEASE_NUMBER'
 	}
 ```
 Lien vers JitPack : https://jitpack.io/#easytransac/easytransac-sdk-android
@@ -182,7 +182,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
    // le code passé préalablement dans le startActivityForResult()
    if (requestCode == RESULT_SDK) {
         if (data != null) {
-		Log.d("Example", data.getStringExtra(EasyTransacSDK.RESULT_STATUS));
+                Log.d("Example", data.getStringExtra(EasyTransacSDK.RESULT_STATUS));
         }
    }
  }
