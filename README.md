@@ -31,7 +31,7 @@ allprojects {
 Importez la dépendance 
 ```css
 	dependencies {
-		implementation 'com.github.easytransac:easytransac-sdk-android:RELEASE_NUMBER'	
+		implementation 'com.github.easytransac:easytransac-sdk-android:RELEASE_NUMBER'
 	}
 ```
 Lien vers JitPack : https://jitpack.io/#easytransac/easytransac-sdk-android
