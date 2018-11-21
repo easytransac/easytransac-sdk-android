@@ -2,7 +2,7 @@
 
 ## Présentation
 
-Le SDK d'EasyTransac permet de payer depuis votre application Android en tout sécurité en effectuant une demande de paiement à l'application EasyTransac directement, et ce, de manière automatisé. L'intégration est très simple à réaliser sur votre application et offre à vos clients une experience de paiement optimale. Notre SDK Android vous **permet d'utiliser le Flash de carte, le NFC (sans contact) ainsi que le paiement multiple**, le tout très simplement.
+Le SDK d'EasyTransac permet de payer depuis votre application Android en tout sécurité en effectuant une demande de paiement à l'application EasyTransac directement, et ce, de manière automatisée. L'intégration est très simple à réaliser sur votre application et offre à vos clients une expérience de paiement optimale. Notre SDK Android vous **permet d'utiliser le Flash de carte, le NFC (sans contact) ainsi que le paiement multiple**, le tout très simplement.
 
 ![Direct payment](https://i.imgur.com/kg1pGHw.png) ![Multiple payment](https://i.imgur.com/OEI6GcI.png)
 
@@ -14,14 +14,14 @@ Le SDK d'EasyTransac permet de payer depuis votre application Android en tout s�
 Pour télécharger l'application et bénéficier du SDK, voici le lien vers le Google Play Store : https://play.google.com/store/apps/details?id=com.movidone.easytransac
 
 ## Fonctionnement
-Le SDK d'EasyTransac est intégré dans l'application elle même, présente sur le Play Store. Pour l'utiliser, il faut appeler l'application via un Intent(). 
+Le SDK d'EasyTransac est intégré dans l'application elle-même, présente sur le Google Play Store. Pour l'utiliser, il faut appeler l'application via un Intent(). 
 
 Pour illustrer le fonctionnement, deux dossiers sont présents dans le dépôt.
 
-- **easytransac_sdk** : contient un seul et unique fichier référençant les paramètres à utiliser pour utiliser le SDK EasyTransac. Il s'agit de constante, ce sont les paramètres à passer à votre Intent.
-- **sample** : projet d'exemple montrant le fonctionnement et l'utilisation du SDK. Vous pouvez l'executer en remplacent simplement les informations demandées.
+- **easytransac_sdk** : contient un seul et unique fichier référençant les paramètres à utiliser pour utiliser le SDK EasyTransac. Il s'agit de constantes, ce sont les paramètres à passer à votre Intent.
+- **sample** : projet d'exemple montrant le fonctionnement et l'utilisation du SDK. Vous pouvez l'exécuter en remplaçant simplement les informations demandées.
 
-Pour appeler l'application EasyTransac depuis votre application, il faut initialiser un nouvel Intent et procédera ainsi : 
+Pour appeler l'application EasyTransac depuis votre application, il faut initialiser un nouvel Intent et procéder ainsi : 
 
 ```java
 Intent intent = new Intent();  
@@ -92,9 +92,9 @@ Un des paramètres que vous avez renseigné est incorrect et ne correspond pas �
 ```java
 public static final int RESULT_CODE_UNEXPECTED_ERROR = -199;
 ```
-Ce code apparait lorsqu'un cas n'a pas été pris en compte dans le SDK. Vous ne devriez pas rencontrer ce code d'erreur. Si cette situation se présente nous sommes automatiquement notifié du problème.
+Ce code apparaît lorsqu'un cas n'a pas été pris en compte dans le SDK. Vous ne devriez pas rencontrer ce code d'erreur. Si cette situation se présente nous sommes automatiquement notifiés du problème.
 
-*Note : Vous pouvez avoir plus d'informations sur l'erreur courante en affichant la valeur de retour du SDK "RESULT_MESSAGE" retourné dans onActivityResult(), variable data.*
+*Note : Vous pouvez avoir plus d'informations sur l'erreur courante en affichant la valeur de retour du SDK "RESULT_MESSAGE" retournée dans onActivityResult(), variable data.*
 
 ### Les codes de retours classiques (relatif à l'API Android)
 
@@ -111,11 +111,11 @@ Tout s'est bien passé, vous trouverez les informations relatives au paiement da
 
 ### Traitement des résultats 
 
-Le résultat d'une demande paiement contient plusieurs paramètres, en fonction du status de l'opération.  
+Le résultat d'une demande paiement contient plusieurs paramètres, en fonction du statut de l'opération.  
 
-Le status d'une opération peut être  : 
+Le statut d'une opération peut être  : 
 - **captured** : la transaction a réussi.
-- **failed** : le paiement à échoué.
+- **failed** : le paiement a échoué.
 - **pending** : le paiement est toujours en attente (situation très rare, souvent relatif à un problème du partenaire bancaire). Vous serrez notifié de l'évolution du paiement soit par notification push. Vous pouvez également consulter la transaction via votre espace client ou via l'application EasyTransac.
 - **issue** : une erreur s'est produite lors de la transmission du paiement.
 
@@ -132,7 +132,7 @@ public final static String RESULT_TID = "RESULT_TID";
 public static final String RESULT_FEES = "RESULT_FEES";  
 ```
 ```java
-// status de la transaction
+// statut de la transaction
 public static final String RESULT_STATUS = "RESULT_STATUS";  
 ```
 ```java
@@ -145,7 +145,7 @@ public static final String RESULT_MESSAGE = "RESULT_MESSAGE";
 public static final String RESULT_DATE = "RESULT_DATE";
 ```
 
-Pour récupérer les valeurs associés à ces clés, il vous suffit de vérifier de récupérer la valeur dans la l'objet "data" dans la fonction onActivityResult().
+Pour récupérer les valeurs associées à ces clés, il vous suffit de récupérer la valeur dans l'objet "data", dans la fonction onActivityResult().
 
 ```java
 @Override  
