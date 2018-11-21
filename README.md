@@ -1,3 +1,4 @@
+
 # SDK Android EasyTransac
 
 ## Présentation
@@ -12,6 +13,33 @@ Le SDK d'EasyTransac permet de payer depuis votre application Android en tout s�
 - Version d'EasyTransac à jour (6.3 minimum)
 
 Pour télécharger l'application et bénéficier du SDK, voici le lien vers le Google Play Store : https://play.google.com/store/apps/details?id=com.movidone.easytransac
+
+## Importation du SDK
+
+### Gradle
+Editez le fichier build.gradle au niveau le plus haut de votre projet et ajoutez la dépendance à JitPack :
+
+```java
+allprojects {  
+    repositories {  
+        ...
+        maven { url 'https://jitpack.io' }  
+    }  
+}
+```
+
+Importez la dépendance 
+```css
+	dependencies {
+		implementation 'com.github.easytransac:easytransac-sdk-android:RELEASE_NUMBER'	
+	}
+```
+Lien vers JitPack : https://jitpack.io/#easytransac/easytransac-sdk-android
+
+### Manuellement
+Téléchargez et copiez dans votre projet le fichier de constantes : https://github.com/easytransac/easytransac-sdk-android/blob/master/easytransac_sdk/src/main/java/com/easytransac/easytransac_sdk/EasyTransacSDK.java
+
+*Note : attention à toujours avoir la version du SDK à jour, c'est pourquoi l'utilisation de Gradle est conseillé.*
 
 ## Fonctionnement
 Le SDK d'EasyTransac est intégré dans l'application elle-même, présente sur le Google Play Store. Pour l'utiliser, il faut appeler l'application via un Intent(). 
