@@ -114,8 +114,6 @@ public class EasyTransacSDK
 	public static final String RESULT_STATUS = "RESULT_STATUS";
 	public static final String RESULT_DATE = "RESULT_DATE";
 
-	public static final int RESULT_CODE_PERMISSION_CAMERA_DENIED = -101;
-	public static final int RESULT_CODE_PERMISSION_NFC_NOT_ENABLED = -102;
 	public static final int RESULT_CODE_MISSING_PARAMETERS = -103;
 	public static final int RESULT_CODE_WRONG_PARAMETERS = -104;
 	public static final int RESULT_CODE_UNEXPECTED_ERROR = -199;

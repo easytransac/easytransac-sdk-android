@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity
 
 			intent.putExtra(EasyTransacSDK.EXTRA_API_KEY, API_KEY);
 			intent.putExtra(EasyTransacSDK.EXTRA_AMOUNT, 1.00);
+			intent.putExtra(EasyTransacSDK.EXTRA_DEMO, true);
 			intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, false);
 			intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "nfc");
 			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_EMAIL, "REPLACE_WITH_YOUR_CUSTOMER_EMAIL");
@@ -57,11 +58,12 @@ public class MainActivity extends AppCompatActivity
 
 			intent.putExtra(EasyTransacSDK.EXTRA_API_KEY, API_KEY);
 			intent.putExtra(EasyTransacSDK.EXTRA_AMOUNT, 100.00);
+			intent.putExtra(EasyTransacSDK.EXTRA_DEMO, true);
 			intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, false);
 			intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "nfc");
 			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_EMAIL, "REPLACE_WITH_YOUR_CUSTOMER_EMAIL");
 			intent.putExtra(EasyTransacSDK.EXTRA_MULTIPLE_PAYMENT, true);
-			intent.putExtra(EasyTransacSDK.EXTRA_DOWN_PAYMENT, 40.00);
+			intent.putExtra(EasyTransacSDK.EXTRA_DOWN_PAYMENT, 33.34);
 			intent.putExtra(EasyTransacSDK.EXTRA_MULTIPLE_PAYMENT_REPEAT, 3);
 
 			startActivityForResult(intent, RESULT_SDK);
