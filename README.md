@@ -197,3 +197,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 ## Informations générales
  - Toutes les dates sont basées sur le fuseau Europe/Paris UTC/GMT +1.
  - L'encodage des caractères est fait selon l'ISO 8859-1
+
+## Sample app
+Le dossier sampleapp contient une application Android montrant l'intégration du SDK.
+Lien vers l'activité principale : https://github.com/easytransac/easytransac-sdk-android/blob/master/sample/src/main/java/com/easytransac/sampleapp/MainActivity.java
