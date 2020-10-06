@@ -106,14 +106,36 @@ public class EasyTransacSDK
 	 */
 	public final static String EXTRA_CUSTOMER_PHONE = "EXTRA_CUSTOMER_PHONE";
 
+	/**
+	 * Boolean extra. Optional. Enable interactive mode.
+	 * Default is true. This mode is requesting permissions if missing and present a resume page.
+	 * minversion 6.7.4
+	 */
+	public final static String EXTRA_INTERACTIVE_MODE = "EXTRA_INTERACTIVE_MODE";
 
+	/**
+	 * String extra. Optional. Your custom NFC text message to show to your customer
+	 * minversion 6.7.4
+	 */
+	public final static String EXTRA_NFC_MESSAGE = "EXTRA_NFC_MESSAGE";
+
+	/**
+	 * Boolean extra. Optional. Used to disable CVV.
+	 * Default is true
+	 * minversion 6.7.4
+	 */
+	public final static String EXTRA_USE_CVV = "EXTRA_USE_CVV";
+
+	// Payment response keys
 	public final static String RESULT_AMOUNT = "RESULT_AMOUNT";
 	public final static String RESULT_TID = "RESULT_TID";
-	public static final String RESULT_FEES = "RESULT_FEES";
 	public static final String RESULT_MESSAGE = "RESULT_MESSAGE";
 	public static final String RESULT_STATUS = "RESULT_STATUS";
 	public static final String RESULT_DATE = "RESULT_DATE";
 
+	// Failure custom result codes
+	public static final int RESULT_CODE_PERMISSION_CAMERA_DENIED = -101;
+	public static final int RESULT_CODE_PERMISSION_NFC_NOT_ENABLED = -102;
 	public static final int RESULT_CODE_MISSING_PARAMETERS = -103;
 	public static final int RESULT_CODE_WRONG_PARAMETERS = -104;
 	public static final int RESULT_CODE_UNEXPECTED_ERROR = -199;

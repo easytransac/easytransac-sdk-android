@@ -2,35 +2,30 @@ package com.easytransac.sampleapp;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.easytransac.easytransac_sdk.EasyTransacSDK;
-
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
+
 	private final static String TAG = "EasyTransacSampleApp";
-	private final static int RESULT_SDK = 0x200;
+	private final static int RESULT_SDK = 200;
 
 	private final static String API_KEY = "REPLACE_BY_YOUR_API_KEY";
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
 
-	public void actionDirectPayment(View view)
-	{
-		if (isPackageInstalled(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, getPackageManager()))
-		{
+	public void actionDirectPayment(View view) {
+		if (isPackageInstalled(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, getPackageManager())) {
 			Intent intent = new Intent();
 			intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME);
 
@@ -40,19 +35,18 @@ public class MainActivity extends AppCompatActivity
 			intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, false);
 			intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "nfc");
 			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_EMAIL, "REPLACE_WITH_YOUR_CUSTOMER_EMAIL");
+			intent.putExtra(EasyTransacSDK.EXTRA_INTERACTIVE_MODE, false);
+			intent.putExtra(EasyTransacSDK.EXTRA_USE_CVV, false);
+			intent.putExtra(EasyTransacSDK.EXTRA_NFC_MESSAGE, "Approchez votre carte du TPE pour scanner");
 
 			startActivityForResult(intent, RESULT_SDK);
-		}
-		else
-		{
+		} else {
 			Toast.makeText(MainActivity.this, getString(R.string.app_not_installed), Toast.LENGTH_LONG).show();
 		}
 	}
 
-	public void actionMultiplePayment(View view)
-	{
-		if (isPackageInstalled(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, getPackageManager()))
-		{
+	public void actionMultiplePayment(View view) {
+		if (isPackageInstalled(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, getPackageManager())) {
 			Intent intent = new Intent();
 			intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME);
 
@@ -67,17 +61,18 @@ public class MainActivity extends AppCompatActivity
 			intent.putExtra(EasyTransacSDK.EXTRA_MULTIPLE_PAYMENT_REPEAT, 3);
 
 			startActivityForResult(intent, RESULT_SDK);
-		}
-		else
-		{
+		} else {
 			Toast.makeText(MainActivity.this, getString(R.string.app_not_installed), Toast.LENGTH_LONG).show();
 		}
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-	{
+	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+		Log.d(TAG, "OnActivityResult");
+		if (resultCode == RESULT_CANCELED) {
+			Log.d(TAG, "User's cancelation");
+		}
 
 		if (data != null) dumpIntent(data);
 	}
@@ -86,8 +81,7 @@ public class MainActivity extends AppCompatActivity
 	 * Useful to debug the SDK answers
 	 * @param i intent
 	 */
-	private void dumpIntent(Intent i)
-	{
+	private void dumpIntent(Intent i) {
 		Bundle bundle = i.getExtras();
 		if (bundle != null)
 		{
@@ -100,15 +94,11 @@ public class MainActivity extends AppCompatActivity
 	}
 
 	// https://stackoverflow.com/questions/18752202/check-if-application-is-installed-android
-	private boolean isPackageInstalled(String packageName, PackageManager packageManager)
-	{
+	private boolean isPackageInstalled(String packageName, PackageManager packageManager) {
 		boolean found = true;
-		try
-		{
+		try {
 			packageManager.getPackageInfo(packageName, 0);
-		}
-		catch (PackageManager.NameNotFoundException e)
-		{
+		} catch (PackageManager.NameNotFoundException e) {
 			found = false;
 		}
 
