@@ -108,6 +108,16 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 ### Les codes de retours en cas d'erreur
 
 ```java
+public static final int RESULT_CODE_PERMISSION_CAMERA_DENIED = -101;  
+```
+Vous souhaitez utiliser le FLASH pour encaisser mais la permission d'usage de la caméra a été refusée.
+
+```java
+public static final int RESULT_CODE_PERMISSION_NFC_NOT_ENABLED = -102;  
+```
+Vous souhaitez utiliser le NFC pour encaisser mais ce dernier n'a pas été activé sur le périphérique.
+
+```java
 public static final int RESULT_CODE_MISSING_PARAMETERS = -103;  
 ```
 Un des paramètres obligatoires a été refusé par le SDK parce qu'il est manquant. Vérifiez que vous utilisez bien les bonnes constantes. 
@@ -154,10 +164,6 @@ public final static String RESULT_AMOUNT = "RESULT_AMOUNT";
 ```java
 // identifiant EasyTransac de la transaction
 public final static String RESULT_TID = "RESULT_TID";  
-```
-```java
-// montant des commissions appliquées
-public static final String RESULT_FEES = "RESULT_FEES";  
 ```
 ```java
 // statut de la transaction
