@@ -10,7 +10,7 @@ Le SDK d'EasyTransac permet de payer depuis votre application Android en toute s
 ## Prérequis
 
 - Application EasyTransac installée sur le périphérique Android (minimum Android version 4.4+).
-- Version d'EasyTransac à jour (6.2, build 125 minimum)
+- Version d'EasyTransac à jour (6.2, build 125 minimum et inférieur à 7.0.0)
 
 Pour télécharger l'application et bénéficier du SDK, voici le lien vers le Google Play Store : https://play.google.com/store/apps/details?id=com.movidone.easytransac
 
