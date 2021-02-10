@@ -1,6 +1,7 @@
 <resources>
 	<string name="app_name">EasyTransac SDK Sample app</string>
-	<string name="multiple_payment">Start multiple payment</string>
-	<string name="direct_payment">Start direct payment</string>
+	<string name="multiple_flash">Multiple payment (Flash)</string>
+	<string name="single_manual">Single payment (Manual)</string>
+	<string name="single_nfc">Single payment (NFC)</string>
 	<string name="app_not_installed">EasyTransac is not installed on your device.</string>
 </resources>

@@ -108,14 +108,9 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 ### Les codes de retours en cas d'erreur
 
 ```java
-public static final int RESULT_CODE_PERMISSION_CAMERA_DENIED = -101;  
+public static final int RESULT_CODE_NFC_ERROR = -102;  
 ```
-Vous souhaitez utiliser le FLASH pour encaisser mais la permission d'usage de la caméra a été refusée.
-
-```java
-public static final int RESULT_CODE_PERMISSION_NFC_NOT_ENABLED = -102;  
-```
-Vous souhaitez utiliser le NFC pour encaisser mais ce dernier n'a pas été activé sur le périphérique.
+Vous souhaitez utiliser le NFC pour encaisser mais ce dernier n'est pas disponible / activé sur le périphérique.
 
 ```java
 public static final int RESULT_CODE_MISSING_PARAMETERS = -103;  
@@ -175,7 +170,7 @@ public static final String RESULT_STATUS = "RESULT_STATUS";
 public static final String RESULT_MESSAGE = "RESULT_MESSAGE";  
 ```
 ```java
-// date exacte du paiement
+// date exacte du paiement format YYYY-MM-DD hh:mm:ss
 public static final String RESULT_DATE = "RESULT_DATE";
 ```
 

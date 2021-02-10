@@ -7,7 +7,7 @@ package com.easytransac.easytransac_sdk;
 public class EasyTransacSDK
 {
 	public final static String EASYTRANSAC_PACKAGE_NAME = "com.movidone.easytransac";
-	public final static String EASYTRANSAC_CLASS_NAME = "com.movidone.easytransac.v2.sdk.ETSDKActivity";
+	public final static String EASYTRANSAC_CLASS_NAME = "com.movidone.easytransac.MainActivity";
 
 	/**
 	 *  String extra. Your application api key.
@@ -107,19 +107,6 @@ public class EasyTransacSDK
 	public final static String EXTRA_CUSTOMER_PHONE = "EXTRA_CUSTOMER_PHONE";
 
 	/**
-	 * Boolean extra. Optional. Enable interactive mode.
-	 * Default is true. This mode is requesting permissions if missing and present a resume page.
-	 * minversion 6.7.4
-	 */
-	public final static String EXTRA_INTERACTIVE_MODE = "EXTRA_INTERACTIVE_MODE";
-
-	/**
-	 * String extra. Optional. Your custom NFC text message to show to your customer
-	 * minversion 6.7.4
-	 */
-	public final static String EXTRA_NFC_MESSAGE = "EXTRA_NFC_MESSAGE";
-
-	/**
 	 * Boolean extra. Optional. Used to disable CVV.
 	 * Default is true
 	 * minversion 6.7.4
@@ -134,8 +121,7 @@ public class EasyTransacSDK
 	public static final String RESULT_DATE = "RESULT_DATE";
 
 	// Failure custom result codes
-	public static final int RESULT_CODE_PERMISSION_CAMERA_DENIED = -101;
-	public static final int RESULT_CODE_PERMISSION_NFC_NOT_ENABLED = -102;
+	public static final int RESULT_CODE_NFC_ERROR = -102;
 	public static final int RESULT_CODE_MISSING_PARAMETERS = -103;
 	public static final int RESULT_CODE_WRONG_PARAMETERS = -104;
 	public static final int RESULT_CODE_UNEXPECTED_ERROR = -199;
