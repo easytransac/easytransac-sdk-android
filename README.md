@@ -23,7 +23,9 @@ Editez le fichier build.gradle au niveau le plus haut de votre projet et ajoutez
 allprojects {    
     repositories {    
         ...  
-        maven { url 'https://jitpack.io' }} }  
+        maven { url 'https://jitpack.io' }
+    } 
+}  
 ``` 
   
 Importez la dépendance
