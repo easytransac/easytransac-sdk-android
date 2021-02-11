@@ -10,14 +10,20 @@
 	<Button
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:onClick="actionDirectPayment"
-		android:text="@string/direct_payment"/>
+		android:onClick="actionSingleNfc"
+		android:text="@string/single_nfc"/>
 
 	<Button
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:onClick="actionMultiplePayment"
-		android:text="@string/multiple_payment"/>
+		android:onClick="actionSingleManual"
+		android:text="@string/single_manual"/>
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="actionMultipleFlash"
+		android:text="@string/multiple_flash"/>
 
 
 </LinearLayout>

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 	private final static String TAG = "EasyTransacSampleApp";
 	private final static int RESULT_SDK = 200;
 
-	private final static String API_KEY = "REPLACE_BY_YOUR_API_KEY";
+	private final static String API_KEY = "YOUR_API_KEY==";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 	}
 
-	public void actionDirectPayment(View view) {
+	public void actionSingleNfc(View view) {
 		if (isPackageInstalled(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, getPackageManager())) {
 			Intent intent = new Intent();
 			intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME);
@@ -34,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
 			intent.putExtra(EasyTransacSDK.EXTRA_DEMO, true);
 			intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, false);
 			intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "nfc");
-			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_EMAIL, "REPLACE_WITH_YOUR_CUSTOMER_EMAIL");
-			intent.putExtra(EasyTransacSDK.EXTRA_INTERACTIVE_MODE, false);
-			intent.putExtra(EasyTransacSDK.EXTRA_USE_CVV, false);
-			intent.putExtra(EasyTransacSDK.EXTRA_NFC_MESSAGE, "Approchez votre carte du TPE pour scanner");
 
 			startActivityForResult(intent, RESULT_SDK);
 		} else {
@@ -45,7 +41,28 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
-	public void actionMultiplePayment(View view) {
+	public void actionSingleManual(View view) {
+		if (isPackageInstalled(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, getPackageManager())) {
+			Intent intent = new Intent();
+			intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME);
+
+			intent.putExtra(EasyTransacSDK.EXTRA_API_KEY, API_KEY);
+			intent.putExtra(EasyTransacSDK.EXTRA_AMOUNT, 2.99);
+			intent.putExtra(EasyTransacSDK.EXTRA_DEMO, true);
+			intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, true);
+			intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "manual");
+			intent.putExtra(EasyTransacSDK.EXTRA_ORDER_ID, "120ABC");
+			intent.putExtra(EasyTransacSDK.EXTRA_ORDER_DESCRIPTION, "Custom operation actionSingleManual");
+			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_FIRSTNAME, "John");
+			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_LASTNAME, "Doe");
+
+			startActivityForResult(intent, RESULT_SDK);
+		} else {
+			Toast.makeText(MainActivity.this, getString(R.string.app_not_installed), Toast.LENGTH_LONG).show();
+		}
+	}
+
+	public void actionMultipleFlash(View view) {
 		if (isPackageInstalled(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, getPackageManager())) {
 			Intent intent = new Intent();
 			intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME);
@@ -53,10 +70,11 @@ public class MainActivity extends AppCompatActivity {
 			intent.putExtra(EasyTransacSDK.EXTRA_API_KEY, API_KEY);
 			intent.putExtra(EasyTransacSDK.EXTRA_AMOUNT, 100.00);
 			intent.putExtra(EasyTransacSDK.EXTRA_DEMO, true);
-			intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, false);
-			intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "nfc");
-			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_EMAIL, "REPLACE_WITH_YOUR_CUSTOMER_EMAIL");
+			intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, true);
+			intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "flash");
 			intent.putExtra(EasyTransacSDK.EXTRA_MULTIPLE_PAYMENT, true);
+			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_FIRSTNAME, "John");
+			intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_LASTNAME, "Doe");
 			intent.putExtra(EasyTransacSDK.EXTRA_DOWN_PAYMENT, 33.34);
 			intent.putExtra(EasyTransacSDK.EXTRA_MULTIPLE_PAYMENT_REPEAT, 3);
 
@@ -70,11 +88,13 @@ public class MainActivity extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		Log.d(TAG, "OnActivityResult");
-		if (resultCode == RESULT_CANCELED) {
-			Log.d(TAG, "User's cancelation");
-		}
+		Toast.makeText(this, "Result code " + resultCode, Toast.LENGTH_SHORT).show();
 
-		if (data != null) dumpIntent(data);
+		// compare the resultCode with EasytransacSDK.RESULT_CODE_XXXXX
+		// compare the intent data keys with EasytransacSDK.RESULT_XXXXX
+		if (data != null) {
+			dumpIntent(data);
+		}
 	}
 
 	/**
@@ -83,13 +103,15 @@ public class MainActivity extends AppCompatActivity {
 	 */
 	private void dumpIntent(Intent i) {
 		Bundle bundle = i.getExtras();
-		if (bundle != null)
-		{
+		if (bundle != null) {
 			Set<String> keys = bundle.keySet();
-			for (String key : keys)
-			{
-				Log.e(TAG, "[" + key + "=" + bundle.get(key) + "]");
+			StringBuilder output = new StringBuilder();
+			for (String key : keys) {
+				output.append("[").append(key).append("=").append(bundle.get(key)).append("]\n");
 			}
+
+			Log.d(TAG, output.toString());
+			Toast.makeText(this, output.toString(), Toast.LENGTH_LONG).show();
 		}
 	}
 
