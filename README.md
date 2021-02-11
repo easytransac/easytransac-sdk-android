@@ -9,8 +9,8 @@ Le SDK Android d'Easytransac permet de payer depuis votre application Android en
   
 ## Prérequis  
   
-- Application EasyTransac installée sur le périphérique Android (minimum Android version 5.0+ (api 21)).  
-- Version d'EasyTransac à jour 7.1.0+  
+- Application Easytransac installée sur le périphérique Android (minimum Android version 5.0+ (api 21)).  
+- Version d'Easytransac à jour 7.1.0+  
   
 Pour télécharger l'application et bénéficier du SDK, voici le lien vers le Google Play Store : https://play.google.com/store/apps/details?id=com.movidone.easytransac  
   
@@ -23,8 +23,8 @@ Editez le fichier build.gradle au niveau le plus haut de votre projet et ajoutez
 allprojects {    
     repositories {    
         ...  
- maven { url 'https://jitpack.io' }} }  
-```  
+        maven { url 'https://jitpack.io' }} }  
+``` 
   
 Importez la dépendance
 ```css  
@@ -42,19 +42,20 @@ Le SDK est intégré dans l'application Easytransac elle-même, présente sur le
   
 Pour illustrer le fonctionnement, deux dossiers sont présents dans le dépôt.  
   
-- **easytransac_sdk** : contient un seul et unique fichier référençant les paramètres à utiliser pour utiliser le SDK EasyTransac. Il s'agit de constantes, ce sont les paramètres à passer à votre Intent. 
+- **easytransac_sdk** : contient un seul et unique fichier référençant les paramètres à utiliser pour utiliser le SDK Easytransac. Il s'agit de constantes, ce sont les paramètres à passer à votre Intent. 
 - **sample** : projet d'exemple montrant le fonctionnement et l'utilisation du SDK. Vous pouvez l'exécuter en remplaçant simplement les informations demandées (principalement la clé d'API, disponible dans la rubrique e-commerce de votre espace commerçant).  
   
 Pour appeler l'application EasyTransac depuis votre application, il faut initialiser un nouvel Intent et procéder ainsi :   
   
 ```java  
-Intent intent = new Intent(); // ces constantes sont présentes dans le SDK et correspondent au nom du package de l'application EasyTransac  
+Intent intent = new Intent(); // ces constantes sont présentes dans le SDK et correspondent au nom du package de l'application Easytransac  
 intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME); 
 intent.putExtra(EasyTransacSDK.EXTRA_API_KEY, "YOUR_API_KEY==");  
 ...  
 // int arbitraire pour onActivityResult  
 startActivityForResult(intent, RESULT_SDK);  
 ```  
+
 ## Paramètres de configuration de l'Intent  
   
 Les paramètres de configurations sont présentés et expliqués dans le fichier de constante du SDK, vous pouvez le consulter en cliquant sur le lien suivant :   
@@ -70,40 +71,50 @@ intent.putExtra(EasyTransacSDK.EXTRA_XXX, "value");
 Voici un exemple complet pour un paiement d'un euro, sans 3DS, en NFC :  
   
 ```java  
-Intent intent = new Intent(); intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME); intent.putExtra(EasyTransacSDK.EXTRA_API_KEY, API_KEY); 
+Intent intent = new Intent(); 
+intent.setClassName(EasyTransacSDK.EASYTRANSAC_PACKAGE_NAME, EasyTransacSDK.EASYTRANSAC_CLASS_NAME); 
+intent.putExtra(EasyTransacSDK.EXTRA_API_KEY, API_KEY); 
+
 // montant en double  
-intent.putExtra(EasyTransacSDK.EXTRA_AMOUNT, 1.00); intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, false);  
+intent.putExtra(EasyTransacSDK.EXTRA_AMOUNT, 1.00); 
+intent.putExtra(EasyTransacSDK.EXTRA_USE_3DS, false);  
+
 // FLASH, NFC, MANUAL  
-intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "NFC"); intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_EMAIL, "sample@mail.com"); startActivityForResult(intent, RESULT_SDK);  
+intent.putExtra(EasyTransacSDK.EXTRA_DETECTION_METHOD, "NFC"); 
+intent.putExtra(EasyTransacSDK.EXTRA_CUSTOMER_EMAIL, "sample@mail.com"); 
+startActivityForResult(intent, RESULT_SDK);  
 ```  
   
 ## Le retour d'une demande de paiement  
   
-Lorsque vous réalisez une demande de paiement, la main est passée à l'application EasyTransac qui va se charger de présenter vos informations à votre client et de le faire payer en toute sécurité.   
-  
+Lorsque vous réalisez une demande de paiement, la main est passée à l'application EasyTransac qui va se charger de présenter vos informations à votre client et de le faire payer en toute sécurité.
 Lorsque le paiement est terminé (réussi, échoué, annulé ou autre erreur de configuration du SDK), un retour est fait dans votre application, via la méthode "onActivityResult()".  
   
 ```java  
 @Override protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {    
-   super.onActivityResult(requestCode, resultCode, data);  
+     super.onActivityResult(requestCode, resultCode, data);  
 	 // le code passé préalablement dans le startActivityForResult() 
 	 if (requestCode == RESULT_SDK) { 
-	 ... 
+	     ... 
 	 }
-} 
- ```  
+}
+```
+
 ### Les codes de retours en cas d'erreur  
 
 ```java  
-public static final int RESULT_CODE_NFC_ERROR = -102; ```  
+public static final int RESULT_CODE_NFC_ERROR = -102; 
+```  
 Vous souhaitez utiliser le NFC pour encaisser mais ce dernier n'est pas disponible / activé sur le périphérique.  
   
 ```java  
-public static final int RESULT_CODE_MISSING_PARAMETERS = -103; ```  
+public static final int RESULT_CODE_MISSING_PARAMETERS = -103; 
+```  
 Un des paramètres obligatoires a été refusé par le SDK parce qu'il est manquant. Vérifiez que vous utilisez bien les bonnes constantes.   
   
 ```java  
-public static final int RESULT_CODE_WRONG_PARAMETERS = -104; ```  
+public static final int RESULT_CODE_WRONG_PARAMETERS = -104; 
+```  
 Un des paramètres que vous avez renseigné est incorrect et ne correspond pas à ce qui est attendu.  
   
 ```java  
@@ -118,8 +129,10 @@ Ce code apparaît lorsqu'un cas n'a pas été pris en compte dans le SDK. Vous n
 ```java  
 /** Standard activity result: operation canceled. */ 
 public static final int RESULT_CANCELED = 0;  
-```  
-Le client a demandé l'annulation de la demande de paiement, il convient donc d'annuler le "parcours de paiement" de votre côté également.  
+```
+
+Le client a demandé l'annulation de la demande de paiement, il convient donc d'annuler le "parcours de paiement" de votre côté également.
+
 ```java  
 /** Standard activity result: operation succeeded. */ 
 public static final int RESULT_OK = -1;  
