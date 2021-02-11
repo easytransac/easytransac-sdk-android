@@ -109,7 +109,8 @@ public class EasyTransacSDK
 	/**
 	 * Boolean extra. Optional. Used to disable CVV.
 	 * Default is true
-	 * minversion 6.7.4
+	 * Warning: this option is depending your account configuration
+	 * Contact us to get more information about this option
 	 */
 	public final static String EXTRA_USE_CVV = "EXTRA_USE_CVV";
 
